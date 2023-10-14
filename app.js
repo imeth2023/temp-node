@@ -1,7 +1,9 @@
-const {readFile} = require('fs');
-const { get } = require('lodash');
+const {readFile, writeFile} = require('fs');
+const util = require('util');
+const readFilePromise = util.promisify(readFile);
+const writeFilePromise = util.promisify(writeFile);
 
-const getText = (path) => {
+/*const getText = (path) => {
     return new Promise((resolve, reject) => {readFile(path, 'utf8', (err, result) => {
 
         if (err) {
@@ -16,17 +18,19 @@ const getText = (path) => {
     
     })
 }
+*/
 
 
 const start = async () => {
 
     try {
-    const first = await getText('./content/test.txt');
-    const second = await getText('./content/second.txt');
+    const first = await readFilePromise('./content/test.txt', 'utf8');
+    const second = await readFilePromise('./content/second.txt', 'utf8');
 
     console.log(first, second);
 
-    }catch (error) {
+    }
+    catch (error) {
         console.log(error);
     }
     start();

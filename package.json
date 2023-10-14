@@ -5,7 +5,7 @@
   "main": "1-intro.js",
   "scripts": {
     "start": "node app.js",
-    "dev": "nodemmon app.js"
+    "dev": "nodemon app.js"
   },
   "author": "",
   "license": "ISC",
